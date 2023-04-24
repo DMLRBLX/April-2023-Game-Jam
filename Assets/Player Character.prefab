@@ -75,6 +75,8 @@ MonoBehaviour:
   anim: {fileID: 716185611989763050}
   bullet: {fileID: 1348260609637200002, guid: db39ef0596e8b60469be1a3eb1390868, type: 3}
   gun: {fileID: 716185612173735083}
+  hitTimer: 0
+  hitTimerMax: 1.5
 --- !u!50 &716185611989763048
 Rigidbody2D:
   serializedVersion: 4

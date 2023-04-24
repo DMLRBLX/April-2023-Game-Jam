@@ -9,6 +9,7 @@ public class PlayerScript : MonoBehaviour
     public Rigidbody2D rb;
     public Animator anim;
     public GameObject bullet, gun;
+    public float hitTimer, hitTimerMax;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,17 +49,19 @@ public class PlayerScript : MonoBehaviour
             anim.SetBool("Aiming", false);
             transform.up = Vector2.Lerp(transform.up, -movementDirection, .5f);
         }
+        hitTimer -= Time.deltaTime;
     }
     public void Update()
     {
         if (shootDirection.magnitude > .2f)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && hitTimer < 0)
             {
                 anim.SetTrigger("Fire");
                 GameObject newBullet = Instantiate(bullet, gun.transform.position, transform.rotation);
                 newBullet.transform.up = -gun.transform.up;
                 rb.AddForce(transform.up * 100);
+                hitTimer = hitTimerMax;
             }
         }
     }
