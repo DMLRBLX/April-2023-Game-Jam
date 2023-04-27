@@ -10,6 +10,9 @@ public class PlayerScript : MonoBehaviour
     public Animator anim;
     public GameObject bullet, gun;
     public float hitTimer, hitTimerMax;
+    public bool suction;
+    public GameObject suctionOrigin;
+    public float suckForce;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +53,11 @@ public class PlayerScript : MonoBehaviour
             transform.up = Vector2.Lerp(transform.up, -movementDirection, .5f);
         }
         hitTimer -= Time.deltaTime;
+        if(suction == true)
+        {
+            Vector3 suckDirection = suctionOrigin.transform.position - transform.position;
+            rb.AddForce(suckDirection.normalized * suckForce);
+        }
     }
     public void Update()
     {
@@ -63,6 +71,22 @@ public class PlayerScript : MonoBehaviour
                 rb.AddForce(transform.up * 100);
                 hitTimer = hitTimerMax;
             }
+        }
+    }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.name == "Suction Zone")
+        {
+            suction = true;
+            suctionOrigin = collision.gameObject.transform.parent.gameObject;
+        }
+    }
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "Suction Zone")
+        {
+            suction = false;
+            suctionOrigin = null;
         }
     }
 }
