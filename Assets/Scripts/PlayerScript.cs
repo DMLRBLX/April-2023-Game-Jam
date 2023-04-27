@@ -41,12 +41,6 @@ public class PlayerScript : MonoBehaviour
         {
             anim.SetBool("Aiming", true);
             transform.up = Vector2.Lerp(transform.up,-shootDirection, .5f);
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                anim.SetTrigger("Fire");
-                GameObject newBullet = Instantiate(bullet, gun.transform.position, transform.rotation);
-                newBullet.transform.up = -gun.transform.up;
-            }
         }
         else
         {

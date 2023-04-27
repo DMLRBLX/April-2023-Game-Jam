@@ -20,7 +20,12 @@ public class HazardScript : MonoBehaviour
     public GameObject drops;
     [Header("Fuel Tank Variables")]
     public ParticleSystem fireColumn;
+    public ParticleSystem fireSource;
+    public ParticleSystem explosion;
     public float fireTimer, fireTimerMax, fireDuration, fireDurationMax;
+    [Header("Vents Variables")]
+    public float spawnTimer, spawnTimerMax;
+    public GameObject spawnPoint1, spawnPoint2;
     
     // Start is called before the first frame update
     void Start()
@@ -91,10 +96,12 @@ public class HazardScript : MonoBehaviour
             }
             if(hazardType == "Transformer")
             {
+                explosion.Play();
                 sparks.SetActive(true);
             }
             if (hazardType == "Computer")
             {
+                explosion.Play();
                 sparks.SetActive(true);
                 FindObjectOfType<PlayerScript>().gravityModifier = .15f;
             }
@@ -105,6 +112,12 @@ public class HazardScript : MonoBehaviour
             if (hazardType == "Fuel Tank")
             {
                 fireColumn.gameObject.SetActive(true);
+                fireSource.gameObject.SetActive(true);
+                explosion.Play();
+            }
+            if (hazardType == "Vents")
+            {
+                explosion.Play();
             }
         }
         if (collision.gameObject.tag == "Player Projectile" && broken == true)
