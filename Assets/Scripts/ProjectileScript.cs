@@ -5,7 +5,7 @@ using UnityEngine;
 public class ProjectileScript : MonoBehaviour
 {
     public Rigidbody2D rb;
-    public float shotSpeed;
+    public float shotSpeed, gravityModifier;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +15,6 @@ public class ProjectileScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.MovePosition(transform.position + transform.up * shotSpeed);
+        rb.MovePosition(transform.position + transform.up * shotSpeed * gravityModifier);
     }
 }

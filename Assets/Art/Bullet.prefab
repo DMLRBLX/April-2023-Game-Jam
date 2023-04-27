@@ -230,7 +230,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1348260609637200000}
-  shotSpeed: 1
+  shotSpeed: 0.5
+  gravityModifier: 0
 --- !u!58 &2712592973762787211
 CircleCollider2D:
   m_ObjectHideFlags: 0

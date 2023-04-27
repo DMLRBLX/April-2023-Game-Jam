@@ -13,6 +13,7 @@ public class PlayerScript : MonoBehaviour
     public bool suction;
     public GameObject suctionOrigin;
     public float suckForce;
+    public float gravityModifier;
     // Start is called before the first frame update
     void Start()
     {
@@ -68,6 +69,7 @@ public class PlayerScript : MonoBehaviour
                 anim.SetTrigger("Fire");
                 GameObject newBullet = Instantiate(bullet, gun.transform.position, transform.rotation);
                 newBullet.transform.up = -gun.transform.up;
+                newBullet.GetComponent<ProjectileScript>().gravityModifier = gravityModifier;
                 rb.AddForce(transform.up * 100);
                 hitTimer = hitTimerMax;
             }

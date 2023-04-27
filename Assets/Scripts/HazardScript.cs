@@ -13,6 +13,7 @@ public class HazardScript : MonoBehaviour
     [Header("Transformer Variables")]
     public SpriteRenderer blackOut;
     public float blackOutTimer, blackOutTimerMax, blackOutDuration, blackOutDurationMax;
+    public GameObject sparks;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +44,7 @@ public class HazardScript : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player Projectile")
+        if(collision.gameObject.tag == "Player Projectile" && broken == false)
         {
             broken = true;
             SR.sprite = brokenSprite;
@@ -51,6 +52,15 @@ public class HazardScript : MonoBehaviour
             if(hazardType == "Window")
             {
                 suctionZone.SetActive(true);
+            }
+            if(hazardType == "Transformer")
+            {
+                sparks.SetActive(true);
+            }
+            if (hazardType == "Computer")
+            {
+                sparks.SetActive(true);
+                FindObjectOfType<PlayerScript>().gravityModifier = .15f;
             }
         }
     }
