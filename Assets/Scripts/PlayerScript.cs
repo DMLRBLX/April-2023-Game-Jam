@@ -82,6 +82,14 @@ public class PlayerScript : MonoBehaviour
             suction = true;
             suctionOrigin = collision.gameObject.transform.parent.gameObject;
         }
+        if(collision.gameObject.name == "Water Puddle")
+        {
+            rb.drag = 1;
+        }
+        if (collision.gameObject.name == "Goo Puddle")
+        {
+            movementSpeed = 2;
+        }
     }
     public void OnTriggerExit2D(Collider2D collision)
     {
@@ -89,6 +97,14 @@ public class PlayerScript : MonoBehaviour
         {
             suction = false;
             suctionOrigin = null;
+        }
+        if (collision.gameObject.name == "Water Puddle")
+        {
+            rb.drag = 4;
+        }
+        if (collision.gameObject.name == "Goo Puddle")
+        {
+            movementSpeed = 5;
         }
     }
 }
