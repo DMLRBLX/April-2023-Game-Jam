@@ -8,6 +8,7 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] float walkPointCushion;
     [SerializeField] float moveSpeed = 15f;
+    [SerializeField] float nextWalkpointWait;
     [SerializeField] Vector2 maxMinWaitTimes;
 
     Transform walkPoint;
@@ -31,12 +32,18 @@ public class EnemyScript : MonoBehaviour
         if (!thinking)
           StartCoroutine(Attack());
 
+        StartCoroutine(NextWaypoint());
+    }
+
+    IEnumerator NextWaypoint()
+    {
         if (!attacking)
         {
             distance = Vector2.Distance(gameObject.transform.position, walkPoint.position);
 
             if (distance < walkPointCushion)
             {
+                yield return new WaitForSeconds(nextWalkpointWait);
                 int randomPoint = Random.Range(0, enemyController.WalkPoints.Length);
                 walkPoint = enemyController.WalkPoints[randomPoint];
             }
@@ -70,11 +77,11 @@ public class EnemyScript : MonoBehaviour
 
     IEnumerator StopAttacking()
     {
-        thinking = true;
         float randomTime = Random.Range(maxMinWaitTimes.y / 2, maxMinWaitTimes.x / 2);
 
         yield return new WaitForSeconds(randomTime);
 
         attacking = false;
+        thinking = false;
     }
 }
