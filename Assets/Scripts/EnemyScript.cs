@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
     [SerializeField] EnemyController enemyController;
-    [SerializeField] AudioSource death;
     [SerializeField] GameObject player;
     [SerializeField] float walkPointCushion;
     [SerializeField] float moveSpeed = 15f;
@@ -107,7 +106,6 @@ public class EnemyScript : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player Projectile" && dead == false)
         {
-            enemyController.death.Play();
             SR.enabled = false;
             CC.enabled = false;
             moveSpeed = 0;
