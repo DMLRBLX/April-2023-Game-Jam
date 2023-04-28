@@ -547,7 +547,7 @@ TextureImporter:
         width: 53
         height: 71
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -568,7 +568,7 @@ TextureImporter:
         width: 53
         height: 70
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -589,7 +589,7 @@ TextureImporter:
         width: 53
         height: 69
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -610,7 +610,7 @@ TextureImporter:
         width: 190
         height: 187
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -631,7 +631,7 @@ TextureImporter:
         width: 188
         height: 187
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -639,6 +639,90 @@ TextureImporter:
       bones: []
       spriteID: 9551df2837541b546836d4660e01bed8
       internalID: 428334584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game-U Room Sprites_2
+      rect:
+        serializedVersion: 2
+        x: 2327
+        y: 1133
+        width: 77
+        height: 228
+      alignment: 9
+      pivot: {x: 0.5, y: 0.64088094}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81da3ec3f66f8454b964e0e98750ddb0
+      internalID: 2074525896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game-U Room Sprites_3
+      rect:
+        serializedVersion: 2
+        x: 2121
+        y: 1260
+        width: 169
+        height: 88
+      alignment: 9
+      pivot: {x: 0.5, y: 0.69283503}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7266ee837a46eb14db212cfc0b1302fe
+      internalID: 174494829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game-U Room Sprites_4
+      rect:
+        serializedVersion: 2
+        x: 2136
+        y: 1166
+        width: 45
+        height: 77
+      alignment: 9
+      pivot: {x: 0.5, y: 0.6180626}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33667b02a098e6f46b20e518fa0f9c1d
+      internalID: -633859028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game-U Room Sprites_5
+      rect:
+        serializedVersion: 2
+        x: 2139
+        y: 1397
+        width: 132
+        height: 171
+      alignment: 9
+      pivot: {x: 0.5, y: 0.18102385}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3596aec64b1cf5849b962b3176c1dcd9
+      internalID: 1200818145
       vertices: []
       indices: 
       edges: []
@@ -654,23 +738,27 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Game-U Room Sprites_0: -96429644
       Transformer Broken: -100451519
       Purple Glass: 885027519
+      Game-U Room Sprites_4: -633859028
       Blue Glass: 1621183092
       Window: -1656729273
       Transformer: 1725744860
       Vent Broken: 1974929178
       Computer Broken: 1875228341
+      Game-U Room Sprites_2: 2074525896
       Vent: 284063672
+      Game-U Room Sprites_3: 174494829
       Green Glass: 594143361
       Pipes: -1604074828
       Floor: 357982716
+      Game-U Room Sprites_5: 1200818145
       Alcove: 2116454976
       Water Puddle: -561637073
       Window Broken: -1916904798
       Goo Puddle: 1768747836
       Wall: -930556520
+      Game-U Room Sprites_0: -96429644
       Pipes Broken: -962394705
       Goo Pipes Broken: -283184288
       Computer: -520820923
