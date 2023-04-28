@@ -12,19 +12,25 @@ public class EnemyScript : MonoBehaviour
 
     Transform walkPoint;
 
-    float distance;
+    float distance, deadTimer;
 
     int walkPointCount;
 
     bool attacking = false;
     bool thinking = false;
     bool waiting = false;
+    bool dead;
+    public SpriteRenderer SR;
+    public CircleCollider2D CC;
+    public ParticleSystem bloodBurst;
 
     private void Start()
     {
+        enemyController = FindObjectOfType<EnemyController>();
         int randomPoint = Random.Range(0, enemyController.WalkPoints.Length);
         walkPoint = enemyController.WalkPoints[randomPoint];
         distance = Vector2.Distance(gameObject.transform.position, walkPoint.position);
+        deadTimer = 3;
     }
 
     private void Update()
@@ -54,6 +60,14 @@ public class EnemyScript : MonoBehaviour
             }
 
             gameObject.transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, (moveSpeed / 10) * Time.deltaTime);
+        }
+        if(dead == true)
+        {
+            deadTimer -= Time.deltaTime;
+            if(deadTimer <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -86,5 +100,16 @@ public class EnemyScript : MonoBehaviour
         yield return new WaitForSeconds(randomTime);
 
         attacking = false;
+    }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Player Projectile")
+        {
+            SR.enabled = false;
+            CC.enabled = false;
+            bloodBurst.Play();
+            dead = true;
+            Destroy(collision.gameObject);
+        }
     }
 }

@@ -20490,18 +20490,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Character
       objectReference: {fileID: 0}
-    - target: {fileID: 716185611989763048, guid: 901769e75f805a84491053f1dd46ec7b, type: 3}
-      propertyPath: m_LinearDrag
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 716185611989763048, guid: 901769e75f805a84491053f1dd46ec7b, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 716185611989763049, guid: 901769e75f805a84491053f1dd46ec7b, type: 3}
-      propertyPath: suckForce
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 716185611989763051, guid: 901769e75f805a84491053f1dd46ec7b, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -55483,27 +55471,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!1 &830394739 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 716185611989763031, guid: 901769e75f805a84491053f1dd46ec7b, type: 3}
-  m_PrefabInstance: {fileID: 394329714}
-  m_PrefabAsset: {fileID: 0}
---- !u!58 &830394740
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 830394739}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.2
 --- !u!1 &847128609
 GameObject:
   m_ObjectHideFlags: 0
