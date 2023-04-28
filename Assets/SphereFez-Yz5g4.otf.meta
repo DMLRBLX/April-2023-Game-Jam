@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: a5ad0a8ac1adbf440b7d646058e7da15
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - SPHERE FEZ
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: f9b5beba4d1659048bd6d510b139c5af, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
