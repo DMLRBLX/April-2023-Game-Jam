@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class PlayerScript : MonoBehaviour
     public float gravityModifier;
     public AudioSource shootSound, hitSound;
     public float health, healthMax;
+    public Image healthBar;
     // Start is called before the first frame update
     void Start()
     {
@@ -56,6 +58,7 @@ public class PlayerScript : MonoBehaviour
             rb.AddForce(suckDirection.normalized * suckForce);
         }
         hitTimer -= Time.deltaTime;
+        healthBar.fillAmount = health / healthMax;
     }
     public void Update()
     {

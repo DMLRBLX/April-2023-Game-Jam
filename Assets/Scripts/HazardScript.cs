@@ -100,6 +100,7 @@ public class HazardScript : MonoBehaviour
             broken = true;
             SR.sprite = brokenSprite;
             Destroy(collision.gameObject);
+            GetComponent<AudioSource>().Play();
             if(hazardType == "Window")
             {
                 suctionZone.SetActive(true);
