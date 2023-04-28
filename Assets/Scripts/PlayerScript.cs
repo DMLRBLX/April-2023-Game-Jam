@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class PlayerScript : MonoBehaviour
     public AudioSource shootSound, hitSound;
     public float health, healthMax;
     public Image healthBar;
+    public GameObject endScreen;
+    public TextMeshProUGUI endText;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +62,13 @@ public class PlayerScript : MonoBehaviour
         }
         hitTimer -= Time.deltaTime;
         healthBar.fillAmount = health / healthMax;
+        if(health <= 0)
+        {
+                endText.text = "Exterminated";
+                endScreen.SetActive(true);
+                Time.timeScale = 0;
+            
+        }
     }
     public void Update()
     {
@@ -123,5 +133,9 @@ public class PlayerScript : MonoBehaviour
             health -= 1;
             anim.SetTrigger("Hit");
         }
+    }
+    public void RetryLevel()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
     }
 }
