@@ -75,7 +75,7 @@ public class EnemyScript : MonoBehaviour
     IEnumerator NewWalkpoint()
     {
         waiting = true;
-        float randomTime = Random.Range(maxMinWaitTimes.y / 4, maxMinWaitTimes.x / 4);
+        float randomTime = Random.Range(maxMinWaitTimes.x / 4, maxMinWaitTimes.y / 4);
         yield return new WaitForSeconds(randomTime);
 
         int randomPoint = Random.Range(0, enemyController.WalkPoints.Length);
@@ -86,7 +86,7 @@ public class EnemyScript : MonoBehaviour
     IEnumerator Attack()
     {
         thinking = true;
-        float randomTime = Random.Range(maxMinWaitTimes.y, maxMinWaitTimes.x);
+        float randomTime = Random.Range(maxMinWaitTimes.x, maxMinWaitTimes.y);
 
         yield return new WaitForSeconds(randomTime);
 
@@ -96,7 +96,7 @@ public class EnemyScript : MonoBehaviour
     IEnumerator StopAttacking()
     {
         thinking = true;
-        float randomTime = Random.Range(maxMinWaitTimes.y / 2, maxMinWaitTimes.x / 2);
+        float randomTime = Random.Range(maxMinWaitTimes.x / 2, maxMinWaitTimes.y / 2);
 
         yield return new WaitForSeconds(randomTime);
 
