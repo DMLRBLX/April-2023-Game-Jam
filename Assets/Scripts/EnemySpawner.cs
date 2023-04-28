@@ -10,6 +10,8 @@ public class EnemySpawner : MonoBehaviour
     public float spawnTimer, spawnTimerMax;
     public float timer, minutes, seconds;
     public TextMeshProUGUI timerText;
+    public GameObject endScreen;
+    public TextMeshProUGUI endText;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +46,12 @@ public class EnemySpawner : MonoBehaviour
         else
         {
             timerText.text = minutes + ":0" + Mathf.RoundToInt(seconds);
+        }
+        if(minutes >= 3)
+        {
+            endText.text = "Exterminated";
+            endScreen.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 }
