@@ -32,6 +32,10 @@ public class AudioController : MonoBehaviour
 
         ready = true;
     }
+    public void LoadMainScene()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
+    }
 }
 
 [System.Serializable]
