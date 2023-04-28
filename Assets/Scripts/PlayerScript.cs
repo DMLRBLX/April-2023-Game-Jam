@@ -9,15 +9,17 @@ public class PlayerScript : MonoBehaviour
     public Rigidbody2D rb;
     public Animator anim;
     public GameObject bullet, gun;
-    public float hitTimer, hitTimerMax;
+    public float shootTimer, shootTimerMax, hitTimer, hitTimerMax;
     public bool suction;
     public GameObject suctionOrigin;
     public float suckForce;
     public float gravityModifier;
+    public AudioSource shootSound, hitSound;
+    public float health, healthMax;
     // Start is called before the first frame update
     void Start()
     {
-        
+        health = healthMax;
     }
 
     // Update is called once per frame
@@ -47,25 +49,27 @@ public class PlayerScript : MonoBehaviour
             anim.SetBool("Aiming", false);
             transform.up = Vector2.Lerp(transform.up, -movementDirection, .5f);
         }
-        hitTimer -= Time.deltaTime;
+        shootTimer -= Time.deltaTime;
         if(suction == true)
         {
             Vector3 suckDirection = suctionOrigin.transform.position - transform.position;
             rb.AddForce(suckDirection.normalized * suckForce);
         }
+        hitTimer -= Time.deltaTime;
     }
     public void Update()
     {
         if (shootDirection.magnitude > .2f)
         {
-            if (Input.GetKeyDown(KeyCode.Space) && hitTimer < 0)
+            if (Input.GetKeyDown(KeyCode.Space) && shootTimer < 0)
             {
                 anim.SetTrigger("Fire");
                 GameObject newBullet = Instantiate(bullet, gun.transform.position, transform.rotation);
                 newBullet.transform.up = -gun.transform.up;
                 newBullet.GetComponent<ProjectileScript>().gravityModifier = gravityModifier;
                 rb.AddForce(transform.up * 100);
-                hitTimer = hitTimerMax;
+                shootSound.Play();
+                shootTimer = shootTimerMax;
             }
         }
     }
@@ -84,6 +88,12 @@ public class PlayerScript : MonoBehaviour
         {
             movementSpeed = 3;
         }
+        if(collision.gameObject.tag == "Enemy" && hitTimer < 0)
+        {
+            hitSound.Play();
+            hitTimer = hitTimerMax;
+            health -= 1;
+        }
     }
     public void OnTriggerExit2D(Collider2D collision)
     {
@@ -99,6 +109,15 @@ public class PlayerScript : MonoBehaviour
         if (collision.gameObject.name == "Goo Puddle")
         {
             movementSpeed = 7;
+        }
+    }
+    public void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy" && hitTimer < 0)
+        {
+            hitSound.Play();
+            hitTimer = hitTimerMax;
+            health -= 1;
         }
     }
 }
