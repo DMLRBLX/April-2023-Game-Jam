@@ -99,6 +99,7 @@ public class HazardScript : MonoBehaviour
         {
             broken = true;
             SR.sprite = brokenSprite;
+            GetComponent<AudioSource>().Play();
             Destroy(collision.gameObject);
             if(hazardType == "Window")
             {
