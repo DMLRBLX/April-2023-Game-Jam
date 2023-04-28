@@ -8,7 +8,6 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] float walkPointCushion;
     [SerializeField] float moveSpeed = 15f;
-    [SerializeField] float nextWalkpointWait;
     [SerializeField] Vector2 maxMinWaitTimes;
 
     Transform walkPoint;
@@ -19,6 +18,7 @@ public class EnemyScript : MonoBehaviour
 
     bool attacking = false;
     bool thinking = false;
+    bool waiting = false;
 
     private void Start()
     {
@@ -32,37 +32,40 @@ public class EnemyScript : MonoBehaviour
         if (!thinking)
           StartCoroutine(Attack());
 
-        StartCoroutine(NextWaypoint());
-    }
-
-    IEnumerator NextWaypoint()
-    {
-        if (!attacking)
+        if (!attacking && !waiting)
         {
             distance = Vector2.Distance(gameObject.transform.position, walkPoint.position);
 
             if (distance < walkPointCushion)
             {
-                yield return new WaitForSeconds(nextWalkpointWait);
-                int randomPoint = Random.Range(0, enemyController.WalkPoints.Length);
-                walkPoint = enemyController.WalkPoints[randomPoint];
+                StartCoroutine(NewWalkpoint());
             }
 
             gameObject.transform.position = Vector2.MoveTowards(this.transform.position, walkPoint.transform.position, (moveSpeed / 10) * Time.deltaTime);
         }
-        else
+        else if (attacking && !waiting)
         {
             StartCoroutine(StopAttacking());
             distance = Vector2.Distance(gameObject.transform.position, player.transform.position);
 
             if (distance < walkPointCushion)
             {
-                int randomPoint = Random.Range(0, enemyController.WalkPoints.Length);
-                walkPoint = enemyController.WalkPoints[randomPoint];
+                StartCoroutine(NewWalkpoint());
             }
 
             gameObject.transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, (moveSpeed / 10) * Time.deltaTime);
         }
+    }
+
+    IEnumerator NewWalkpoint()
+    {
+        waiting = true;
+        float randomTime = Random.Range(maxMinWaitTimes.y / 4, maxMinWaitTimes.x / 4);
+        yield return new WaitForSeconds(randomTime);
+
+        int randomPoint = Random.Range(0, enemyController.WalkPoints.Length);
+        walkPoint = enemyController.WalkPoints[randomPoint];
+        waiting = false;
     }
 
     IEnumerator Attack()
@@ -77,11 +80,11 @@ public class EnemyScript : MonoBehaviour
 
     IEnumerator StopAttacking()
     {
+        thinking = true;
         float randomTime = Random.Range(maxMinWaitTimes.y / 2, maxMinWaitTimes.x / 2);
 
         yield return new WaitForSeconds(randomTime);
 
         attacking = false;
-        thinking = false;
     }
 }
