@@ -78,11 +78,11 @@ public class PlayerScript : MonoBehaviour
         }
         if(collision.gameObject.name == "Water Puddle")
         {
-            rb.drag = 1;
+            rb.drag = 2;
         }
         if (collision.gameObject.name == "Goo Puddle")
         {
-            movementSpeed = 2;
+            movementSpeed = 3;
         }
     }
     public void OnTriggerExit2D(Collider2D collision)
@@ -98,7 +98,7 @@ public class PlayerScript : MonoBehaviour
         }
         if (collision.gameObject.name == "Goo Puddle")
         {
-            movementSpeed = 5;
+            movementSpeed = 7;
         }
     }
 }

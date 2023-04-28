@@ -27,6 +27,7 @@ public class EnemyScript : MonoBehaviour
     private void Start()
     {
         enemyController = FindObjectOfType<EnemyController>();
+        player = FindObjectOfType<PlayerScript>().gameObject;
         int randomPoint = Random.Range(0, enemyController.WalkPoints.Length);
         walkPoint = enemyController.WalkPoints[randomPoint];
         distance = Vector2.Distance(gameObject.transform.position, walkPoint.position);
@@ -103,10 +104,11 @@ public class EnemyScript : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player Projectile")
+        if(collision.gameObject.tag == "Player Projectile" && dead == false)
         {
             SR.enabled = false;
             CC.enabled = false;
+            moveSpeed = 0;
             bloodBurst.Play();
             dead = true;
             Destroy(collision.gameObject);

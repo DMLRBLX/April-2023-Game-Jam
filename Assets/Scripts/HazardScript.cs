@@ -26,6 +26,7 @@ public class HazardScript : MonoBehaviour
     [Header("Vents Variables")]
     public float spawnTimer, spawnTimerMax;
     public GameObject spawnPoint1, spawnPoint2;
+    public GameObject enemy;
     
     // Start is called before the first frame update
     void Start()
@@ -79,6 +80,16 @@ public class HazardScript : MonoBehaviour
                     fireDuration = fireDurationMax;
                     fireColumn.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
                 }
+            }
+        }
+        if (broken == true && hazardType == "Vents")
+        {
+            spawnTimer -= Time.deltaTime;
+            if(spawnTimer <= 0)
+            {
+                Instantiate(enemy, spawnPoint1.transform.position, enemy.transform.rotation);
+                Instantiate(enemy, spawnPoint1.transform.position, enemy.transform.rotation);
+                spawnTimer = spawnTimerMax;
             }
         }
     }

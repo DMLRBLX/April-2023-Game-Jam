@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c8c7baa5f711d54bbdbd6cb2f6ffcd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  movementSpeed: 7
   movementDirection: {x: 0, y: 0, z: 0}
   shootDirection: {x: 0, y: 0, z: 0}
   rb: {fileID: 716185611989763048}
