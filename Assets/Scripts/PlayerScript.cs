@@ -118,6 +118,7 @@ public class PlayerScript : MonoBehaviour
             hitSound.Play();
             hitTimer = hitTimerMax;
             health -= 1;
+            anim.SetTrigger("Hit");
         }
     }
 }
