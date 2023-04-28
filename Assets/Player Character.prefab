@@ -80,7 +80,7 @@ MonoBehaviour:
   bullet: {fileID: 1348260609637200002, guid: db39ef0596e8b60469be1a3eb1390868, type: 3}
   gun: {fileID: 716185612173735083}
   shootTimer: 0
-  shootTimerMax: 1
+  shootTimerMax: 0
   hitTimer: 0
   hitTimerMax: 1
   suction: 0
@@ -90,8 +90,7 @@ MonoBehaviour:
   shootSound: {fileID: 3426793957581098927}
   hitSound: {fileID: 43834804837037059}
   health: 0
-  healthMax: 25
-  healthBar: {fileID: 0}
+  healthMax: 10
 --- !u!50 &716185611989763048
 Rigidbody2D:
   serializedVersion: 4
